@@ -19,7 +19,7 @@ class GroupPointTest(tf.test.TestCase):
       print grouped_points
 
     with self.test_session():
-      print "---- Going to compute gradient error"
+      print ("---- Going to compute gradient error")
       err = tf.test.compute_gradient_error(points, (1,128,16), grouped_points, (1,8,32,16))
       print err
       self.assertLess(err, 1e-4) 
