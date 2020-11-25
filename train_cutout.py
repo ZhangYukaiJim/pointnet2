@@ -202,7 +202,7 @@ def train_one_epoch(sess, ops, train_writer):
     loss_sum = 0
     batch_idx = 0
     while TRAIN_DATASET.has_next_batch():
-        batch_data, batch_label = TRAIN_DATASET.next_batch(augment=True, bubble=True, max_radius=MAX_RADIUS)
+        batch_data, batch_label = TRAIN_DATASET.next_batch(augment=True, max_radius=MAX_RADIUS)
         #batch_data = provider.random_point_dropout(batch_data)
         bsize = batch_data.shape[0]
         cur_batch_data[0:bsize,...] = batch_data
