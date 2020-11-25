@@ -147,7 +147,7 @@ class ModelNetH5Dataset(object):
         data_batch = self.current_data[start_idx:end_idx, 0:self.npoints, :].copy()
         label_batch = self.current_label[start_idx:end_idx].copy()
         self.batch_idx += 1
-        if bubble: data_batch = self.bubble_cropout(data_batch, max_radius, random_bubble_radius=True, close=True)
+        if bubble: data_batch = self.bubble_cropout(batch_data=data_batch, max_bubble_radius=max_radius)
         if augment: data_batch = self._augment_batch_data(data_batch)
         return data_batch, label_batch 
 
