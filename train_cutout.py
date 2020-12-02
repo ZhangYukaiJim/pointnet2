@@ -36,7 +36,7 @@ parser.add_argument('--decay_step', type=int, default=200000, help='Decay step f
 parser.add_argument('--decay_rate', type=float, default=0.7, help='Decay rate for lr decay [default: 0.7]')
 parser.add_argument('--normal', action='store_true', help='Whether to use normal information')
 parser.add_argument('--max_radius', type=float, default=0.3, help='maximum radius of the bubble')
-parser.add_argument('--close', type=bool, default=True, help='Whether to close the opening created by cropout [default: True]')
+parser.add_argument('--close', type=bool, default=False, help='Whether to close the opening created by cropout [default: True]')
 FLAGS = parser.parse_args()
 
 EPOCH_CNT = 0
