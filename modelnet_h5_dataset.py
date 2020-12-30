@@ -70,13 +70,14 @@ class ModelNetH5Dataset(object):
         self.batch_idx = 0
    
     def _augment_batch_data(self, batch_data, max_radius=0.3):
-        batch_data = provider.bubble_cropout(batch_data, max_bubble_radius=max_radius, random_bubble_radius=False, close=False)
+        # batch_data = provider.bubble_cropout(batch_data, max_bubble_radius=max_radius, random_bubble_radius=False, close=False)
         rotated_data = provider.rotate_point_cloud(batch_data)
         rotated_data = provider.rotate_perturbation_point_cloud(rotated_data)
         jittered_data = provider.random_scale_point_cloud(rotated_data[:,:,0:3])
         jittered_data = provider.shift_point_cloud(jittered_data)
         jittered_data = provider.jitter_point_cloud(jittered_data)
-        rotated_data[:,:,0:3] = jittered_data
+        crop_data = provider.bubble_cropout(jittered_data, max_bubble_radius=max_radius, random_bubble_radius=False, close=False)
+        rotated_data[:,:,0:3] = crop_data
         return provider.shuffle_points(rotated_data)
 
     def _get_data_filename(self):
