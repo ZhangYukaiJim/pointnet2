@@ -1,1 +1,6 @@
 **/data
+log*/
+tf_ops/
+*__pycache__/
+*.so
+*.pyc
